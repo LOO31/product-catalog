@@ -1,17 +1,17 @@
 # Product Catalog
 
-A simple Product Catalog mobile application built with Flutter for the Junior Mobile Developer technical assessment.
+This is a simple Product Catalog app built with Flutter for the Junior Mobile Developer technical assessment.
 
-The app uses the DummyJSON API to display, search, and view product information.
+The app uses the DummyJSON API to load and search for products.
 
 ## Features
 
-- Display product title, thumbnail, and price
-- Load more products when scrolling using pagination
-- View product details including description, price, rating, and images
-- Search products with debounce
-- Loading, error, empty, and success states
-- Retry button when an API request fails
+- View product title, image and price
+- Load more products when scrolling
+- View product details
+- Search products with a 500ms debounce
+- Loading, error and empty states
+- Retry when loading fails
 - Pull-to-refresh
 - Image loading and error handling
 - Unit test for Product JSON parsing
@@ -20,12 +20,10 @@ The app uses the DummyJSON API to display, search, and view product information.
 
 - Flutter
 - Dart
-- HTTP package
-- DummyJSON REST API
+- HTTP
+- DummyJSON API
 
 ## Project Structure
-
-The project is separated into different parts:
 
 ```text
 lib/
@@ -39,15 +37,13 @@ lib/
 └── main.dart
 ```
 
-- `models` - Product data model and JSON conversion
-- `services` - Handles API requests
-- `screens` - Handles the UI and user interaction
+- `models` - stores the product data
+- `services` - handles API requests
+- `screens` - contains the UI and user interaction
 
-I used this structure to keep the API/data logic separate from the UI.
+I separated the API logic from the UI to keep the code easier to manage.
 
 ## API
-
-This project uses the DummyJSON Products API.
 
 Product list:
 
@@ -69,14 +65,14 @@ GET /products/search?q={query}
 
 ## Search
 
-I chose server-side search using the DummyJSON search endpoint instead of filtering only the products already loaded on the device.
+I used the DummyJSON search API instead of only filtering the products that are already loaded.
 
-A 500ms debounce is used so the app does not send an API request for every character typed by the user.
+I also added a 500ms debounce to avoid sending a request for every character typed.
 
 ## How to Run
 
 1. Make sure Flutter is installed.
-2. Clone this repository.
+2. Clone the repository.
 3. Open the project.
 4. Install the dependencies:
 
@@ -85,7 +81,7 @@ flutter pub get
 ```
 
 5. Start an Android emulator or connect an Android device.
-6. Run the application:
+6. Run:
 
 ```bash
 flutter run
@@ -93,20 +89,18 @@ flutter run
 
 ## Testing
 
-Run the unit test with:
+Run the test with:
 
 ```bash
 flutter test
 ```
 
-The unit test checks the conversion of JSON data into a Product object.
+The test checks if the Product model can convert JSON data correctly.
 
-## Incomplete / TODO
+## TODO
 
-All required features are implemented.
-
-With more time, I would improve the UI styling and add more test coverage.
+If I had more time, I would add more tests and continue improving the UI.
 
 ## AI Assistance
 
-AI was used minimally for guidance and research during development, such as clarifying Flutter concepts and checking implementation approaches. The application structure, implementation decisions, and final code were reviewed and understood before submission.
+I used AI for guidance, troubleshooting, and some implementation examples while working on the project. I reviewed and tested the final code and made sure I understand the implementation.
